@@ -1,27 +1,25 @@
 def call(args) {
-    // see if pip is installed
-    sh(script: """
-        if ! which pip; then
-            easy_install pip
-        fi
-    """)
-
-    // see if virtualenv is installed
+        // see if virtualenv is installed
     sh(script: """
         if ! pip freeze | grep virtualenv; then
             python2 -m pip install virtualenv
         fi
     """)
 
-    // run the command
-    sh(
-        returnStdout: true,
-        script: """
+    // create the env if it doesn't exist
+    res = sh(script: """
             if [ ! -d "py27" ]; then
                 python2 -m virtualenv py27           
             fi
             source py27/bin/activate
             ${args}
-        """
-    )
+        """)
+    if [ $res != 0 ]; then
+        echo "Failed to create virtualenv"
+        return $res
+    fi
+
+    // run the command
+    res = sh """${args}"""
+    return res
 }
