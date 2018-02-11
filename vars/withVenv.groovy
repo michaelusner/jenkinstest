@@ -1,6 +1,6 @@
 #!groovy
 
-def call(name, args) {
+def call(name='py27', args) {
     if (isUnix()) {
         return venv.withUnix(name, args)
     } else {
