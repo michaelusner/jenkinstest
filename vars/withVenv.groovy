@@ -1,4 +1,11 @@
 def call(args) {
+    // see if pip is installed
+    sh(script: """
+        if ! which pip; then
+            sudo easy_install pip
+        fi
+    """)
+
     // see if virtualenv is installed
     sh(script: """
         if ! pip freeze | grep virtualenv; then
