@@ -1,5 +1,11 @@
 def call(args) {
-        // see if virtualenv is installed
+    if (isUnix()) {
+        return callUnix(args)
+    }
+}
+
+def callLinux(args) {
+    // see if virtualenv is installed
     res = sh(returnStatus: true,
         script: """
             if ! pip freeze | grep virtualenv; then
