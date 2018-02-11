@@ -1,10 +1,10 @@
 #!groovy
 
-def call(String name='py27', String args) {
+def call(body) {
     if (isUnix()) {
-        return venv.withUnix(name, args)
+        return venv.withUnix(body.name, body.args)
     } else {
-        return venv.withWindows(name, args)
+        return venv.withWindows(body.name, body.args)
     }
 }
 
