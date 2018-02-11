@@ -16,5 +16,3 @@ class VirtualEnv {
     }
 }
 
-def main() {
-}
