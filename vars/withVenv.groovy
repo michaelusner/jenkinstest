@@ -1,4 +1,12 @@
 def call(args) {
+    // see if virtualenv is installed
+    sh(script: """
+        if ! pip freeze | grep virtualenv; then
+            python2 -m pip install virtualenv
+        fi
+    """)
+
+    // run the command
     sh(
         returnStdout: true,
         script: """
