@@ -14,10 +14,10 @@ def call(args) {
             source py27/bin/activate
             ${args}
         """)
-    if [ $res != 0 ]; then
-        echo "Failed to create virtualenv"
+    if ($res != 0) {
+        println "Failed to create virtualenv"
         return $res
-    fi
+    }
 
     // run the command
     res = sh """${args}"""
