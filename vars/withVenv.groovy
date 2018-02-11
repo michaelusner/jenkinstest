@@ -11,15 +11,11 @@ def call(args) {
             if [ ! -d "py27" ]; then
                 python2 -m virtualenv py27           
             fi
-            source py27/bin/activate
+            . ./py27/bin/activate
             ${args}
         """)
     if ($res != 0) {
-        println "Failed to create virtualenv"
+        println "Failed to run command"
         return $res
     }
-
-    // run the command
-    res = sh """${args}"""
-    return res
 }
