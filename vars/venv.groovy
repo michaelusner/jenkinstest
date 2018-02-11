@@ -1,4 +1,6 @@
-def withLinux(args) {
+#!groovy
+
+def withUnix(args) {
     // see if virtualenv is installed
     res = sh(returnStatus: true,
         script: """
