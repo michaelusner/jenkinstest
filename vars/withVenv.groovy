@@ -2,7 +2,7 @@ def call(args) {
     // see if pip is installed
     sh(script: """
         if ! which pip; then
-            sudo easy_install pip
+            easy_install pip
         fi
     """)
 
