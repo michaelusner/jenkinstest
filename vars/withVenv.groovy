@@ -1,10 +1,10 @@
 #!groovy
 
-def call(body) {
+def call(params) {
     if (isUnix()) {
-        return venv.withUnix(body.name, body.args)
+        return venv.withUnix(params.name, params.args)
     } else {
-        return venv.withWindows(body.name, body.args)
+        return venv.withWindows(params.name, params.args)
     }
 }
 
