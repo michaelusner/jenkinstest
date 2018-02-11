@@ -14,8 +14,8 @@ def call(args) {
             . ./py27/bin/activate
             ${args}
         """)
-    if ($res != 0) {
+    if (res != 0) {
         println "Failed to run command"
-        return res
     }
+    return res
 }
