@@ -16,6 +16,6 @@ def call(args) {
         """)
     if ($res != 0) {
         println "Failed to run command"
-        return $res
+        return res
     }
 }
